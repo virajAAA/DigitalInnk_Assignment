@@ -1,0 +1,39 @@
+.register {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.input {
+  padding: 2px;
+  width: 300px;
+  max-width: 80%;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.registerbtn {
+  margin-top: 1rem;
+  padding: 10px 40px;
+  background: #000;
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+}
+
+.cancel {
+  margin: 2rem;
+  padding: 10px 40px;
+  background: rgb(241, 52, 52);
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+}
+
+.messages {
+  color: rgb(201, 69, 69);
+  font-size: 16px;
+}
