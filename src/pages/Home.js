@@ -3,49 +3,71 @@ import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
 const DivLayout = styled.div`
+  height: 100vh;
+  width: 100%;
   display: flex;
   align-items: center;
-  width: 100%;
-  height: 100vh;
   justify-content: center;
-  // background: linear-gradient(#3db1ff, #cad6d2, #3df9c2);
-  background: linear-gradient(#e66465, #9198e5);
+  flex-direction: column;
+  background-color: #f0efef;
 `;
-
 
 const ButtonOuter = styled.div`
-  width: 100%;
+  height: 40vh;
+  width: 30%;
   display: flex;
+  align-items: center;
   justify-content: center;
-  justify-content: center;
+  flex-direction: row;
+  background-color: white;
+  border: 2px solid white;
+  
+  border-radius: 10px;
 `;
 
-const ButtonLayout = styled.button`
-  padding: 10px;
-  margin: 10px;
-  width: 13%;
-  border: 2px solid black;
-  border-radius: 25px;
-  font-size: 15px;
-  font-weight: 500;
+const LoginButton = styled.button`
+  margin: 5px;
+  height: 18%;
+  width: 30%;
+  border: 2px solid #4997FB;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  background-color:#4997FB;
+  color:#fff;
 `;
+
+const RgisterButton = styled.button`
+  margin: 5px;
+  height: 18%;
+  width: 30%;
+  border: 2px solid #5BCE43;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  background-color:#5BCE43;
+  color:#fff;
+`;
+
+
+
 
 function Home() {
   let history = useHistory();
 
   return (
-    <div className="Home">
+
       <DivLayout>
         <ButtonOuter>
-          <ButtonLayout type="button" onClick={() => history.push("/Login")}>
+          <LoginButton type="button" onClick={() => history.push("/Login")}>
             Login
-          </ButtonLayout>
-          <ButtonLayout type="button" onClick={() => history.push("/Register")}>
+          </LoginButton>
+          <RgisterButton type="button" onClick={() => history.push("/Register")}>
             Register
-          </ButtonLayout>
+          </RgisterButton>
         </ButtonOuter>
       </DivLayout>
-    </div>
+    
   );
 }
 
