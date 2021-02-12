@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Card, Button } from "../components";
+import { notification } from "antd";
+import "antd/dist/antd.css";
 import * as yup from "yup";
 import firebase from "firebase";
 
@@ -47,13 +49,17 @@ const schema = yup.object().shape({
     .required("Required *"),
 });
 
+const Context = React.createContext({ name: "Default" });
+
 function Register() {
   const history = useHistory();
   const { register, handleSubmit, errors } = useForm({
     mode: "onTouched",
     resolver: yupResolver(schema),
   });
+
   const [userCreationError, setUserCreationError] = useState("");
+  const [api , contexHolder] = notification.useNotification();
 
   const onSubmit = (data) => {
     const email = data.email;
@@ -63,6 +69,10 @@ function Register() {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((res) => {
+        notification.success({
+          description: `Thanks you for registering`,
+          placement: "topRight",
+        });
         history.push("/");
       })
       .catch((error) => {
@@ -75,54 +85,57 @@ function Register() {
   };
 
   return (
-    <ContainerWrapper>
-      <Card>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div>
-            <p>
-              <label>Email</label>
-            </p>
-            <p>
-              <input
-                className="input"
-                name="email"
-                type="email"
-                ref={register}
-              />
-            </p>
-            <ErrorMessage>{errors.email?.message}</ErrorMessage>
-          </div>
-          <div>
-            <p>
-              <label>Password</label>
-            </p>
-            <p>
-              <input name="password" type="password" ref={register} />
-            </p>
-            <ErrorMessage>{errors.password?.message}</ErrorMessage>
-          </div>
+    <Context.Provider value={{ name: "Ant Design" }}>
+      {contexHolder}
+      <ContainerWrapper>
+        <Card>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div>
+              <p>
+                <label>Email</label>
+              </p>
+              <p>
+                <input
+                  className="input"
+                  name="email"
+                  type="email"
+                  ref={register}
+                />
+              </p>
+              <ErrorMessage>{errors.email?.message}</ErrorMessage>
+            </div>
+            <div>
+              <p>
+                <label>Password</label>
+              </p>
+              <p>
+                <input name="password" type="password" ref={register} />
+              </p>
+              <ErrorMessage>{errors.password?.message}</ErrorMessage>
+            </div>
 
-          <div>
-            <p>
-              <label>Confirm Password</label>
-            </p>
-            <p>
-              <input name="confirmPassword" type="password" ref={register} />
-            </p>
-            <ErrorMessage>{errors.confirmPassword?.message}</ErrorMessage>
-          </div>
-          {userCreationError && <span>{userCreationError}</span>}
-          <div>
-            <Button variant="primary" type="submit">
-              Register
-            </Button>
-            <Button variant="secondary" onClick={() => history.push("/")}>
-              Cancel
-            </Button>
-          </div>
-        </form>
-      </Card>
-    </ContainerWrapper>
+            <div>
+              <p>
+                <label>Confirm Password</label>
+              </p>
+              <p>
+                <input name="confirmPassword" type="password" ref={register} />
+              </p>
+              <ErrorMessage>{errors.confirmPassword?.message}</ErrorMessage>
+            </div>
+            {userCreationError && <span>{userCreationError}</span>}
+            <div>
+              <Button variant="primary" type="submit">
+                Register
+              </Button>
+              <Button variant="secondary" onClick={() => history.push("/")}>
+                Cancel
+              </Button>
+            </div>
+          </form>
+        </Card>
+      </ContainerWrapper>
+    </Context.Provider>
   );
 }
 

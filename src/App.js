@@ -10,12 +10,13 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 
 firebase.initializeApp({
-  apiKey: "AIzaSyBeLW5_X-tLbz0FVAPAoyz5bLadZ5PRL14",
-  authDomain: "data-store-69911.firebaseapp.com",
-  projectId: "data-store-69911",
-  storageBucket: "data-store-69911.appspot.com",
-  messagingSenderId: "282072649241",
-  appId: "1:282072649241:web:669dd64a4e217ae5002488",
+  apiKey: "AIzaSyBdb3FFFnXAXaCFkCzRgrLAuwLmAteS4eU",
+  authDomain: "digital-innk.firebaseapp.com",
+  projectId: "digital-innk",
+  storageBucket: "digital-innk.appspot.com",
+  messagingSenderId: "829204323095",
+  appId: "1:829204323095:web:036f499456f81946697552",
+  measurementId: "G-HX3WT284FS"
 });
 
 const App = () => (
