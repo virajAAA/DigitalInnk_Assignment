@@ -39,14 +39,14 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 ### `firebase deploy`
 
 Assignment Requirements -
-[x] - Create the home page with links for Login and Register page.
-[x] - Create the Login page and add support of authenticating user using firebase.
-[x] - Create the Register page and add support of adding new user to firebase.
-[x] - Add support of `react-hook-form`
-[x] - Add support of `yup` for validations.
-[x] - Use `ant-d` as a react component library.
-[x] - Add support of `redux` for state management.
-[] - Add support of unit-tests.
+- [x] Create the home page with links for Login and Register page.
+- [x] Create the Login page and add support of authenticating user using firebase.
+- [x] Create the Register page and add support of adding new user to firebase.
+- [x] Add support of `react-hook-form`
+- [x] Add support of `yup` for validations.
+- [x] Use `ant-d` as a react component library.
+- [x] Add support of `redux` for state management.
+- [] Add support of unit-tests.
 
 ## Technologies Used
 
