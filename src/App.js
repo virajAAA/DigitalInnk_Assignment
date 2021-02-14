@@ -16,29 +16,30 @@ firebase.initializeApp({
   storageBucket: "digital-innk.appspot.com",
   messagingSenderId: "829204323095",
   appId: "1:829204323095:web:036f499456f81946697552",
-  measurementId: "G-HX3WT284FS"
+  measurementId: "G-HX3WT284FS",
 });
 
-const App = () => (
-  <React.Fragment>
-    <GlobalStyle />
-    <Router>
-      <Switch>
-        <Route path="/" exact>
-          <Home />
-        </Route>
-        <Route path="/Register" exact>
-          <Register />
-        </Route>
-        <Route path="/Login" exact>
-          <Login />
-        </Route>
-        <Route path="/Dashboard" exact>
-          <Dashboard />
-        </Route>
-      </Switch>
-    </Router>
-  </React.Fragment>
-);
-
+const App = () => {
+  return (
+    <React.Fragment>
+      <GlobalStyle />
+      <Router>
+        <Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route path="/Register" exact>
+            <Register />
+          </Route>
+          <Route path="/Login" exact>
+            <Login />
+          </Route>
+          <Route path="/Dashboard" exact>
+            <Dashboard />
+          </Route>
+        </Switch>
+      </Router>
+    </React.Fragment>
+  );
+};
 export default App;

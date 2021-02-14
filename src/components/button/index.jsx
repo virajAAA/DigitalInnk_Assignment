@@ -3,12 +3,16 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const ButtonWrapper = styled.button`
-  height: 32px;
-  padding: 4px 15px;
-  font-size: 14px;
+  height: 40px;
+  padding: 1px 40px;
+  font-size: 19px;
   border-radius: 8px;
-  margin-right: 8px;
+  color: white;
+  font-weight: 500;
 
+  :not(button:last-of-type) {
+    margin-right: 16px;
+  }
   ${(props) => ({
     ...(props.variant === "primary" && {
       borderColor: "#4997fb",
@@ -18,10 +22,16 @@ const ButtonWrapper = styled.button`
       borderColor: "#5bce43",
       backgroundColor: "#5bce43",
     }),
+    ...(props.variant === "danger" && {
+      borderColor: "#DC3545",
+      backgroundColor: "#DC3545",
+    }),
     ...(props.size === "large" && {
       height: "40px",
-      padding: "6.4px 15px",
-      fontSize: "16px",
+      padding: "1px 35px",
+      fontsize: "19px",
+      color: "white",
+      fontweight: "500",
     }),
     ...(props.centerAlign && {
       display: "block",

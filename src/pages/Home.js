@@ -4,13 +4,13 @@ import { Button, Card } from "../components";
 import { useHistory } from "react-router-dom";
 
 const ContainerWrapper = styled.div`
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: #f0efef;
+height: 100%;
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+background-color: #f0efef;
 `;
 
 function Home() {

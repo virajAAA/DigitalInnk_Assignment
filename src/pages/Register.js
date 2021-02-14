@@ -19,9 +19,42 @@ const ContainerWrapper = styled.div`
   background-color: #f0efef;
 `;
 
+const FormDetials = styled.form`
+  width: 100%;
+`;
+
+const Input = styled.input`
+  border: 1px solid black;
+  border-radius: 6px;
+  font-size: 14px;
+  padding: 2px 10px;
+  border: 1px solid black;
+  border-radius: 6px;
+  width: 100%;
+`;
+
 const ErrorMessage = styled.p`
   color: rgb(201, 69, 69);
-  font-size: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-left: 25px;
+`;
+
+const LableDetails = styled.label`
+  font-size: 18px;
+  font-weight: 500;
+  color: black;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const InputWrapper = styled.div`
+  border-radius: 6px;
+  font-size: 14px;
+  padding: 5px 10px;
 `;
 
 const lowerCaseRegex = /(?=.*[a-z])/;
@@ -59,7 +92,10 @@ function Register() {
   });
 
   const [userCreationError, setUserCreationError] = useState("");
-  const [api , contexHolder] = notification.useNotification();
+
+  /* eslint-disable no-unused-vars */
+  const [api, contexHolder] = notification.useNotification();
+  /* eslint-enable no-unused-vars */
 
   const onSubmit = (data) => {
     const email = data.email;
@@ -89,50 +125,52 @@ function Register() {
       {contexHolder}
       <ContainerWrapper>
         <Card>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <FormDetials onSubmit={handleSubmit(onSubmit)}>
             <div>
               <p>
-                <label>Email</label>
+                <LableDetails>Email</LableDetails>
               </p>
-              <p>
-                <input
+              <InputWrapper>
+                <Input
                   className="input"
                   name="email"
                   type="email"
                   ref={register}
                 />
-              </p>
+              </InputWrapper>
               <ErrorMessage>{errors.email?.message}</ErrorMessage>
             </div>
             <div>
               <p>
-                <label>Password</label>
+                <LableDetails>Password</LableDetails>
               </p>
-              <p>
-                <input name="password" type="password" ref={register} />
-              </p>
+              <InputWrapper>
+                <Input name="password" type="password" ref={register} />
+              </InputWrapper>
               <ErrorMessage>{errors.password?.message}</ErrorMessage>
             </div>
 
             <div>
               <p>
-                <label>Confirm Password</label>
+                <LableDetails>Confirm Password</LableDetails>
               </p>
-              <p>
-                <input name="confirmPassword" type="password" ref={register} />
-              </p>
+              <InputWrapper>
+                <Input name="confirmPassword" type="password" ref={register} />
+              </InputWrapper>
               <ErrorMessage>{errors.confirmPassword?.message}</ErrorMessage>
             </div>
-            {userCreationError && <span>{userCreationError}</span>}
-            <div>
-              <Button variant="primary" type="submit">
+            {userCreationError && (
+              <ErrorMessage>{userCreationError}</ErrorMessage>
+            )}
+            <ButtonWrapper>
+              <Button variant="secondary" type="submit">
                 Register
               </Button>
-              <Button variant="secondary" onClick={() => history.push("/")}>
+              <Button variant="danger" onClick={() => history.push("/")}>
                 Cancel
               </Button>
-            </div>
-          </form>
+            </ButtonWrapper>
+          </FormDetials>
         </Card>
       </ContainerWrapper>
     </Context.Provider>
